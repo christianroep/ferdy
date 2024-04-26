@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-image: url("/images/background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.card {
+  box-shadow: rgba(227, 224, 222, 0.5) 5px 5px, rgba(227, 224, 222, 0.3) 10px 10px, rgba(227, 224, 222, 0.2) 15px 15px, rgba(227, 224, 222, 0.1) 20px 20px, rgba(227, 224, 222, 0.05) 25px 25px;
+  border-radius: 10px;
+  padding: 20px;
+  flex-direction: column;
+  display: flex;
+  width: 95%;
+}
+
+/* Underline styles */
+.navlink {
+  display: block;
+  position: relative;
+}
+
+/* Fade in */
+.navlink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.navlink:hover::after,
+.navlink:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
+
+
+/* Scale from center */
+.navlink.scale-from-center::after {
+  opacity: 1;
+  transform: scale(0);
+  transform-origin: center;
+}
+
+.navlink.scale-from-center:hover::after,
+.navlink.scale-from-center:focus::after {
+  transform: scale(1);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Media query for small heights */
+@media (max-height: 1100px) {
+  .footer {
+    position: static; /* Switches position to static for small screens */
+  }
+}
